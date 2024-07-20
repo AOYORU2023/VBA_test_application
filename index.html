@@ -1,0 +1,136 @@
+<div id="vba-quiz">
+  <h2>VBA ベーシック試験クイズ</h2>
+  <div id="question"></div>
+  <div id="choices"></div>
+  <div id="result"></div>
+  <div id="explanation"></div>
+  <button id="nextButton" style="display:none;">次の問題</button>
+</div>
+
+<style>
+#vba-quiz {
+  max-width: 100%;
+  margin: 10px auto;
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  padding: 0 10px;
+}
+#vba-quiz h2 {
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+#vba-quiz button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+  font-size: 16px;
+  cursor: pointer;
+}
+#vba-quiz #result,
+#vba-quiz #explanation {
+  margin-top: 15px;
+}
+</style>
+
+<script type="text/javascript">
+//<![CDATA[
+(function() {
+  var quizData = [
+    {
+      question: "VBAで変数を宣言するキーワードは何ですか？",
+      choices: ["var", "dim", "let"],
+      correct: 1,
+      explanation: "VBAでは、'Dim'キーワードを使用して変数を宣言します。例: Dim myVariable As Integer"
+    },
+    {
+      question: "VBAでループを終了させるステートメントは？",
+      choices: ["End Loop", "Exit For", "Break"],
+      correct: 1,
+      explanation: "'Exit For'を使用してForループを途中で終了させることができます。While/Do...Whileループの場合は'Exit Do'を使用します。"
+    },
+    {
+      question: "VBAで配列の最初のインデックスは通常何ですか？",
+      choices: ["0", "1", "任意に設定可能"],
+      correct: 0,
+      explanation: "VBAでは、デフォルトで配列の最初のインデックスは0です。ただし、'Option Base 1'を使用して1から始めることも可能です。"
+    }
+  ];
+
+  var currentQuestion = 0;
+
+  function loadQuestion() {
+    var question = quizData[currentQuestion];
+    document.getElementById('question').innerHTML = "<p><strong>" + question.question + "</strong></p>";
+    var choicesHtml = "";
+    for (var i = 0; i < question.choices.length; i++) {
+      choicesHtml += '<button onclick="checkAnswer(' + i + ')">' + question.choices[i] + '</button>';
+    }
+    document.getElementById('choices').innerHTML = choicesHtml;
+    document.getElementById('result').innerHTML = '';
+    document.getElementById('explanation').innerHTML = '';
+    document.getElementById('nextButton').style.display = 'none';
+  }
+
+  function checkAnswer(choiceIndex) {
+    var question = quizData[currentQuestion];
+    var resultDiv = document.getElementById('result');
+    var explanationDiv = document.getElementById('explanation');
+    
+    if (choiceIndex === question.correct) {
+      resultDiv.innerHTML = '<p style="color: green;"><strong>正解です！</strong></p>';
+    } else {
+      resultDiv.innerHTML = '<p style="color: red;"><strong>不正解です。</strong></p>';
+    }
+    
+    explanationDiv.innerHTML = "<p><strong>解説:</strong> " + question.explanation + "</p>";
+    document.getElementById('nextButton').style.display = 'block';
+  }
+
+  function nextQuestion() {
+    currentQuestion++;
+    if (currentQuestion < quizData.length) {
+      loadQuestion();
+    } else {
+      document.getElementById('vba-quiz').innerHTML = '<h2>クイズ終了！お疲れ様でした。</h2>';
+    }
+  }
+
+  window.checkAnswer = checkAnswer;
+  window.nextQuestion = nextQuestion;
+
+  document.addEventListener('DOMContentLoaded', function() {
+    loadQuestion();
+    document.getElementById('nextButton').addEventListener('click', nextQuestion);
+  });
+})();
+//]]>
+</script>
+
+<script>
+quizData = [
+    {
+        question: "VBAで変数を宣言するキーワードは何ですか？",
+        choices: ["var", "dim", "let"],
+        correct: 1,
+        explanation: "VBAでは、'Dim'キーワードを使用して変数を宣言します。例: Dim myVariable As Integer"
+    },
+    {
+        question: "VBAでループを終了させるステートメントは？",
+        choices: ["End Loop", "Exit For", "Break"],
+        correct: 1,
+        explanation: "'Exit For'を使用してForループを途中で終了させることができます。While/Do...Whileループの場合は'Exit Do'を使用します。"
+    },
+    {
+        question: "VBAで配列の最初のインデックスは通常何ですか？",
+        choices: ["0", "1", "任意に設定可能"],
+        correct: 0,
+        explanation: "VBAでは、デフォルトで配列の最初のインデックスは0です。ただし、'Option Base 1'を使用して1から始めることも可能です。"
+    }
+];
+
+// メインスクリプトの初期化関数を呼び出す
+if (typeof loadQuestion === 'function') {
+    loadQuestion();
+}
+</script>
