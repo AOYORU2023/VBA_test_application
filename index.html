@@ -5,20 +5,76 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VBAベーシック検定クイズ</title>
     <style>
-        body { font-family: Arial, sans-serif; text-align: center; max-width: 800px; margin: 0 auto; padding: 20px; }
-        #quiz { margin: 20px; }
-        button { margin: 5px; padding: 15px; font-size: 18px; }
+        body { 
+            font-family: Arial, sans-serif; 
+            text-align: center; 
+            max-width: 800px; 
+            margin: 0 auto; 
+            padding: 20px; 
+            background-color: #f0f8ff; /* 薄い青色の背景 */
+            color: #333; /* ダークグレーのテキスト */
+        }
+        #quiz { 
+            margin: 20px; 
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        button { 
+            margin: 5px; 
+            padding: 15px; 
+            font-size: 18px; 
+            background-color: #4CAF50; /* 緑色のボタン */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #45a049; /* ホバー時の色 */
+        }
         #choices button { 
             display: block; 
             width: 100%; 
             margin: 10px 0; 
-            text-align: left; 
+            text-align: center;
             font-size: 18px;
             padding: 15px 20px;
+            background-color: #3498db; /* 青色の選択肢ボタン */
         }
-        #explanation { margin-top: 20px; text-align: left; border: 1px solid #ddd; padding: 10px; display: none; }
-        #next { display: none; }
-        #question { font-size: 20px; font-weight: bold; }
+        #choices button:hover {
+            background-color: #2980b9; /* ホバー時の色 */
+        }
+        #explanation { 
+            margin-top: 20px; 
+            text-align: left; 
+            border: 1px solid #ddd; 
+            padding: 10px; 
+            display: none; 
+            background-color: #e8f4f8; /* 薄い青色の背景 */
+            border-radius: 5px;
+        }
+        #next { 
+            display: none; 
+            background-color: #f39c12; /* オレンジ色の次へボタン */
+        }
+        #next:hover {
+            background-color: #e67e22; /* ホバー時の色 */
+        }
+        #question { 
+            font-size: 20px; 
+            font-weight: bold; 
+            color: #2c3e50; /* ダークブルーの問題文 */
+        }
+        h1 {
+            color: #2c3e50; /* ダークブルーのタイトル */
+        }
+        #result {
+            font-weight: bold;
+            font-size: 18px;
+        }
     </style>
 </head>
 <body>
@@ -59,8 +115,10 @@
             const quiz = quizData[currentQuestion];
             if (choiceIndex === quiz.correct) {
                 resultEl.textContent = "正解！";
+                resultEl.style.color = "#27ae60"; // 緑色で正解を表示
             } else {
                 resultEl.textContent = "不正解。正解は「" + quiz.choices[quiz.correct] + "」です。";
+                resultEl.style.color = "#c0392b"; // 赤色で不正解を表示
             }
             explanationEl.textContent = quiz.explanation;
             explanationEl.style.display = "block";
