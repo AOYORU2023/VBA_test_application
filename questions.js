@@ -150,9 +150,9 @@ const quizData = [
     // 4-1 オブジェクト式
     {
         question: "次のうち、正しいオブジェクト式はどれですか？",
-        choices: ["Workbooks(1).Worksheets(1).Range(A1)", "Workbooks(1).Worksheets(1).Range("A1")", "Workbooks[1].Worksheets[1].Range["A1"]"],
+        choices: ["Workbooks(1).Worksheets(1).Range(A1)", "Workbooks(1).Worksheets(1).Range(\"A1\")", "Workbooks[1].Worksheets[1].Range[\"A1\"]"],
         correct: 1,
-        explanation: "正しいオブジェクト式は Workbooks(1).Worksheets(1).Range("A1") です。VBAではオブジェクトの階層構造をピリオドで連結し、文字列は二重引用符で囲みます。"
+        explanation: "正しいオブジェクト式は Workbooks(1).Worksheets(1).Range(\"A1\") です。VBAではオブジェクトの階層構造をピリオドで連結し、文字列は二重引用符で囲みます。"
     },
     {
         question: "オブジェクト式とは何ですか？",
@@ -192,9 +192,9 @@ const quizData = [
     // 4-2 ステートメント
     {
         question: "次のうち、正しいVBAステートメントはどれですか？",
-        choices: ["Cell.Value = 10", "Range("A1").Value = 10", "A1 = 10"],
+        choices: ["Cell.Value = 10", "Range(\"A1\").Value = 10", "A1 = 10"],
         correct: 1,
-        explanation: "正しいステートメントは Range("A1").Value = 10 です。これはセルA1に値10を代入するステートメントです。"
+        explanation: "正しいステートメントは Range(\"A1\").Value = 10 です。これはセルA1に値10を代入するステートメントです。"
     },
 
 
@@ -203,7 +203,7 @@ const quizData = [
         question: "VBAで文字列の長さを取得する関数は？",
         choices: ["Length()", "Len()", "Size()"],
         correct: 1,
-        explanation: "文字列の長さを取得するには Len() 関数を使用します。例：stringLength = Len("Hello World")"
+        explanation: "文字列の長さを取得するには Len() 関数を使用します。例：stringLength = Len(\"Hello World\")"
     },
 
 
@@ -212,7 +212,7 @@ const quizData = [
         question: "VBAで文字列を連結する演算子は？",
         choices: ["+", "&", "||"],
         correct: 1,
-        explanation: "VBAで文字列を連結するには & 演算子を使用します。例："Hello" & " " & "World" は "Hello World" となります。"
+        explanation: "VBAで文字列を連結するには & 演算子を使用します。例：\"Hello\" & \" \" & \"World\" は \"Hello World\" となります。"
     },
 
 
@@ -307,9 +307,9 @@ const quizData = [
     // 6-1 セルを操作する
     {
         question: "VBAでセルA1を参照する正しい方法は？",
-        choices: ["Cells(A, 1)", "Range("A1")", "A1"],
+        choices: ["Cells(A, 1)", "Range(\"A1\")", "A1"],
         correct: 1,
-        explanation: "セルA1を参照する正しい方法は Range("A1") です。これはオブジェクト式の一例で、特定のセルを指定するのに使用されます。"
+        explanation: "セルA1を参照する正しい方法は Range(\"A1\") です。これはオブジェクト式の一例で、特定のセルを指定するのに使用されます。"
     },
 
 
@@ -318,7 +318,7 @@ const quizData = [
         question: "セルの値を取得するために使用するプロパティは？",
         choices: ["Text", "Formula", "Value"],
         correct: 2,
-        explanation: "セルの値を取得するには Value プロパティを使用します。例：cellValue = Range("A1").Value"
+        explanation: "セルの値を取得するには Value プロパティを使用します。例：cellValue = Range(\"A1\").Value"
     },
 
 
@@ -342,7 +342,7 @@ const quizData = [
         question: "現在のセルから相対的に別のセルを参照するプロパティは？",
         choices: ["Relative", "Offset", "Move"],
         correct: 1,
-        explanation: "Offset プロパティを使用すると、現在のセルから相対的に別のセルを参照できます。例：Range("A1").Offset(1, 1) はB2セルを指します。"
+        explanation: "Offset プロパティを使用すると、現在のセルから相対的に別のセルを参照できます。例：Range(\"A1\").Offset(1, 1) はB2セルを指します。"
     },
     {
         question: "別のセルを表すために使うプロパティはどれですか？",
@@ -361,7 +361,7 @@ const quizData = [
         question: "選択範囲を拡大または縮小するプロパティは？",
         choices: ["Expand", "Resize", "Adjust"],
         correct: 1,
-        explanation: "Resize プロパティを使用すると、選択範囲を拡大または縮小できます。例：Range("A1").Resize(2, 2) はA1:B2の範囲を選択します。"
+        explanation: "Resize プロパティを使用すると、選択範囲を拡大または縮小できます。例：Range(\"A1\").Resize(2, 2) はA1:B2の範囲を選択します。"
     },
 
     //End プロパティ
@@ -369,7 +369,7 @@ const quizData = [
         question: "Endプロパティの主な用途は何ですか？",
         choices: ["セル範囲の最後のセルを選択する", "プロシージャを終了する", "ループを終了する"],
         correct: 0,
-        explanation: "Endプロパティは、特定の方向の最後の使用されているセルを選択するために使用されます。例：Range("A1").End(xlDown)は、A列の最後の使用されているセルを選択します。"
+        explanation: "Endプロパティは、特定の方向の最後の使用されているセルを選択するために使用されます。例：Range(\"A1\").End(xlDown)は、A列の最後の使用されているセルを選択します。"
     },
 
 
@@ -393,7 +393,7 @@ const quizData = [
         question: "特定のセルを選択状態にするメソッドは？",
         choices: ["Activate", "Select", "Focus"],
         correct: 1,
-        explanation: "特定のセルを選択状態にするには Select メソッドを使用します。例：Range("A1").Select"
+        explanation: "特定のセルを選択状態にするには Select メソッドを使用します。例：Range(\"A1\").Select"
     },
 
     // 6-6 セルのメソッド（追加問題）
@@ -407,7 +407,7 @@ const quizData = [
         question: "セル（または行、列）を削除するメソッドは？",
         choices: ["Remove", "Delete", "Erase"],
         correct: 1,
-        explanation: "セル、行、または列を削除するには、Delete メソッドを使用します。例：Range("A1").Delete"
+        explanation: "セル、行、または列を削除するには、Delete メソッドを使用します。例：Range(\"A1\").Delete"
     },
 
 
@@ -416,7 +416,7 @@ const quizData = [
         question: "A1からC3までのセル範囲を指定する正しい方法は？",
         choices: ["Range("A1-C3")", "Range("A1:C3")", "Range(A1,C3)"],
         correct: 1,
-        explanation: "A1からC3までのセル範囲を指定するには、Range("A1:C3") を使用します。コロン (:) を使って範囲を指定します。"
+        explanation: "A1からC3までのセル範囲を指定するには、Range(\"A1:C3\") を使用します。コロン (:) を使って範囲を指定します。"
     },
 
 
@@ -472,7 +472,7 @@ const quizData = [
         question: "文字列の一部を取り出す関数は次のうちどれですか？",
         choices: ["Substring()", "Extract()", "Mid()"],
         correct: 2,
-        explanation: "VBAでは、Mid() 関数を使用して文字列の一部を取り出します。例：Mid("Hello", 2, 2) は 'el' を返します。"
+        explanation: "VBAでは、Mid() 関数を使用して文字列の一部を取り出します。例：Mid(\"Hello\", 2, 2) は 'el' を返します。"
     },
 
 
@@ -481,19 +481,19 @@ const quizData = [
         question: "文字列を小文字に変換する関数は？",
         choices: ["Lower()", "LCase()", "ToLower()"],
         correct: 1,
-        explanation: "文字列を小文字に変換するには、LCase() 関数を使用します。例：LCase("HELLO") は "hello" を返します。"
+        explanation: "文字列を小文字に変換するには、LCase() 関数を使用します。例：LCase(\"HELLO\") は \"hello\" を返します。"
     },
     {
         question: "文字列の先頭と末尾の空白を削除する関数は？",
         choices: ["Trim()", "Strip()", "Clean()"],
         correct: 0,
-        explanation: "文字列の先頭と末尾の空白を削除するには、Trim() 関数を使用します。例：Trim("  Hello  ") は "Hello" を返します。"
+        explanation: "文字列の先頭と末尾の空白を削除するには、Trim() 関数を使用します。例：Trim(\"  Hello  \") は "Hello" を返します。"
     },
     {
         question: "文字列内の特定の部分文字列を別の文字列に置換する関数は？",
         choices: ["Substitute()", "Replace()", "Swap()"],
         correct: 1,
-        explanation: "文字列内の特定の部分を置換するには、Replace() 関数を使用します。例：Replace("Hello World", "World", "VBA") は "Hello VBA" を返します。"
+        explanation: "文字列内の特定の部分を置換するには、Replace() 関数を使用します。例：Replace(\"Hello World\", \"World\", \"VBA\") は \"Hello VBA\" を返します。"
     },
     {
         question: "文字列の文字コードを変換する関数は？",
@@ -538,7 +538,7 @@ const quizData = [
         question: "ユーザーに入力を求めるダイアログボックスを表示する関数は？",
         choices: ["InputBox()", "GetInput()", "PromptUser()"],
         correct: 0,
-        explanation: "InputBox() 関数を使用すると、ユーザーに入力を求めるダイアログボックスを表示できます。例：userInput = InputBox("名前を入力してください")"
+        explanation: "InputBox() 関数を使用すると、ユーザーに入力を求めるダイアログボックスを表示できます。例：userInput = InputBox(\"名前を入力してください\")"
     },
 
 
