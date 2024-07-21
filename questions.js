@@ -414,7 +414,7 @@ const quizData = [
     // 6-7 複数セル（セル範囲）の指定
     {
         question: "A1からC3までのセル範囲を指定する正しい方法は？",
-        choices: ["Range("A1-C3")", "Range("A1:C3")", "Range(A1,C3)"],
+        choices: ["Range(\"A1-C3\")", "Range(\"A1:C3\")", "Range(A1,C3)"],
         correct: 1,
         explanation: "A1からC3までのセル範囲を指定するには、Range(\"A1:C3\") を使用します。コロン (:) を使って範囲を指定します。"
     },
@@ -423,7 +423,7 @@ const quizData = [
     // 6-8 行や列の指定
     {
         question: "3行目全体を指定する正しい方法は？",
-        choices: ["Range("3:3")", "Rows(3)", "Range("A3:XFD3")"],
+        choices: ["Range(\"3:3\")", "Rows(3)", "Range(\"A3:XFD3\")"],
         correct: 1,
         explanation: "3行目全体を指定するには Rows(3) を使用します。これは3行目のすべてのセルを選択します。"
     },
@@ -487,7 +487,7 @@ const quizData = [
         question: "文字列の先頭と末尾の空白を削除する関数は？",
         choices: ["Trim()", "Strip()", "Clean()"],
         correct: 0,
-        explanation: "文字列の先頭と末尾の空白を削除するには、Trim() 関数を使用します。例：Trim(\"  Hello  \") は "Hello" を返します。"
+        explanation: "文字列の先頭と末尾の空白を削除するには、Trim() 関数を使用します。例：Trim(\"  Hello  \") は \"Hello\" を返します。"
     },
     {
         question: "文字列内の特定の部分文字列を別の文字列に置換する関数は？",
