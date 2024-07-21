@@ -270,5 +270,272 @@ const quizData = [
         choices: ["Dim", "Const", "Set"],
         correct: 1,
         explanation: "定数を宣言するには「Const」キーワードを使用します。"
+    },
+    // 6 セルの操作
+    // 6-1 セルを操作する
+    {
+        question: "VBAでセルA1を参照する正しい方法は？",
+        choices: ["Cells(A, 1)", "Range(\"A1\")", "A1"],
+        correct: 1,
+        explanation: "セルA1を参照する正しい方法は Range(\"A1\") です。これはオブジェクト式の一例で、特定のセルを指定するのに使用されます。"
+    },
+    // 6-2 Value プロパティ
+    {
+        question: "セルの値を取得するために使用するプロパティは？",
+        choices: ["Text", "Formula", "Value"],
+        correct: 2,
+        explanation: "セルの値を取得するには Value プロパティを使用します。例：cellValue = Range(\"A1\").Value"
+    },
+    // 6-3 セルの様子を表すプロパティ
+    {
+        question: "セルに表示されているテキストを取得するプロパティは？",
+        choices: ["Value", "Text", "DisplayedText"],
+        correct: 1,
+        explanation: "セルに表示されているテキストを取得するには Text プロパティを使用します。これは、セルの表示形式に従って整形された文字列を返します。"
+    },
+    {
+        question: "セルの数式を取得するために使うプロパティはどれですか？",
+        choices: ["Text", "Value", "Formula"],
+        correct: 2,
+        explanation: "セルの数式を取得するためには「Formula」プロパティを使用します。"
+    },
+    // 6-4 別のセルを表すプロパティ
+    {
+        question: "現在のセルから相対的に別のセルを参照するプロパティは？",
+        choices: ["Relative", "Offset", "Move"],
+        correct: 1,
+        explanation: "Offset プロパティを使用すると、現在のセルから相対的に別のセルを参照できます。例：Range(\"A1\").Offset(1, 1) はB2セルを指します。"
+    },
+    {
+        question: "別のセルを表すために使うプロパティはどれですか？",
+        choices: ["Offset", "Resize", "End"],
+        correct: 0,
+        explanation: "別のセルを表すためには「Offset」プロパティを使用します。"
+    },
+    {
+        question: "セル範囲を選択するために使うメソッドはどれですか？",
+        choices: ["Activate", "Select", "Copy"],
+        correct: 1,
+        explanation: "セル範囲を選択するためには「Select」メソッドを使用します。"
+    },
+    // Resize プロパティ
+    {
+        question: "選択範囲を拡大または縮小するプロパティは？",
+        choices: ["Expand", "Resize", "Adjust"],
+        correct: 1,
+        explanation: "Resize プロパティを使用すると、選択範囲を拡大または縮小できます。例：Range(\"A1\").Resize(2, 2) はA1:B2の範囲を選択します。"
+    },
+    //End プロパティ
+    {
+        question: "Endプロパティの主な用途は何ですか？",
+        choices: ["セル範囲の最後のセルを選択する", "プロシージャを終了する", "ループを終了する"],
+        correct: 0,
+        explanation: "Endプロパティは、特定の方向の最後の使用されているセルを選択するために使用されます。例：Range(\"A1\").End(xlDown)は、A列の最後の使用されているセルを選択します。"
+    },
+    // 6-5 セルを表すその他の単語（追加問題）
+    {
+        question: "現在アクティブなセルを参照するためのプロパティは？",
+        choices: ["ActiveCell", "CurrentCell", "SelectedCell"],
+        correct: 0,
+        explanation: "現在アクティブなセル（選択されているセル）を参照するには、ActiveCell プロパティを使用します。"
+    },
+    {
+        question: "現在選択されている範囲を参照するためのプロパティは？",
+        choices: ["ActiveRange", "CurrentSelection", "Selection"],
+        correct: 2,
+        explanation: "現在選択されている範囲を参照するには、Selection プロパティを使用します。"
+    },
+    // 6-6 セルのメソッド
+    {
+        question: "特定のセルを選択状態にするメソッドは？",
+        choices: ["Activate", "Select", "Focus"],
+        correct: 1,
+        explanation: "特定のセルを選択状態にするには Select メソッドを使用します。例：Range(\"A1\").Select"
+    },
+    // 6-6 セルのメソッド（追加問題）
+    {
+        question: "セルの内容をクリアするメソッドは？",
+        choices: ["Clear", "Delete", "ClearContents"],
+        correct: 2,
+        explanation: "セルの内容をクリアするには、ClearContents メソッドを使用します。これはセルの書式を保持したまま、内容のみをクリアします。"
+    },
+    {
+        question: "セル（または行、列）を削除するメソッドは？",
+        choices: ["Remove", "Delete", "Erase"],
+        correct: 1,
+        explanation: "セル、行、または列を削除するには、Delete メソッドを使用します。例：Range(\"A1\").Delete"
+    },
+
+
+    // 6-7 複数セル（セル範囲）の指定
+    {
+        question: "A1からC3までのセル範囲を指定する正しい方法は？",
+        choices: ["Range(\"A1-C3\")", "Range(\"A1:C3\")", "Range(A1,C3)"],
+        correct: 1,
+        explanation: "A1からC3までのセル範囲を指定するには、Range(\"A1:C3\") を使用します。コロン (:) を使って範囲を指定します。"
+    },
+    // 6-8 行や列の指定
+    {
+        question: "3行目全体を指定する正しい方法は？",
+        choices: ["Range(\"3:3\")", "Rows(3)", "Range(\"A3:XFD3\")"],
+        correct: 1,
+        explanation: "3行目全体を指定するには Rows(3) を使用します。これは3行目のすべてのセルを選択します。"
+    },
+    // 7 ステートメント（続き）
+    // 7-1 For...Nextステートメント
+    {
+        question: "1から10まで数えるFor...Nextループの正しい書き方は？",
+        choices: ["For i = 1 To 10 ... Next", "For i = 1 Until 10 ... Next", "For i = 1; i <= 10; i++ ... Next"],
+        correct: 0,
+        explanation: "VBAでは、For i = 1 To 10 ... Next が正しい For...Next ループの書き方です。これは1から10まで繰り返し処理を行います。"
+    },
+    // 7-2 Ifステートメント
+    {
+        question: "VBAで複数の条件を持つIf文を書く場合、どのキーワードを使用しますか？",
+        choices: ["Else If", "ElseIf", "Elsif"],
+        correct: 1,
+        explanation: "VBAでは、複数の条件を持つIf文を書く場合、ElseIf キーワードを使用します。例：If ... ElseIf ... Else ... End If"
+    },
+    // 7-3 Withステートメント
+    {
+        question: "Withステートメントの主な目的は何ですか？",
+        choices: ["コードの実行速度を上げる", "オブジェクト名の繰り返しを避ける", "変数のスコープを制限する"],
+        correct: 1,
+        explanation: "Withステートメントの主な目的は、オブジェクト名の繰り返しを避けることです。これにより、コードが簡潔になり、読みやすくなります。"
+    },
+    // 8 関数
+    // 8-1 日付や時刻を操作する関数
+    {
+        question: "現在の日付と時刻を取得する関数は？",
+        choices: ["CurrentDateTime()", "Now()", "GetNow()"],
+        correct: 1,
+        explanation: "現在の日付と時刻を取得するには Now() 関数を使用します。この関数は現在の日付と時刻を返します。"
+    },
+    // 8-2 文字列を操作する関数
+    {
+        question: "文字列の一部を取り出す関数は次のうちどれですか？",
+        choices: ["Substring()", "Extract()", "Mid()"],
+        correct: 2,
+        explanation: "VBAでは、Mid() 関数を使用して文字列の一部を取り出します。例：Mid(\"Hello\", 2, 2) は 'el' を返します。"
+    },
+    // 8-2 文字列を操作する関数（追加問題）
+    {
+        question: "文字列を小文字に変換する関数は？",
+        choices: ["Lower()", "LCase()", "ToLower()"],
+        correct: 1,
+        explanation: "文字列を小文字に変換するには、LCase() 関数を使用します。例：LCase(\"HELLO\") は \"hello\" を返します。"
+    },
+    {
+        question: "文字列の先頭と末尾の空白を削除する関数は？",
+        choices: ["Trim()", "Strip()", "Clean()"],
+        correct: 0,
+        explanation: "文字列の先頭と末尾の空白を削除するには、Trim() 関数を使用します。例：Trim(\"  Hello  \") は \"Hello\" を返します。"
+    },
+    {
+        question: "文字列内の特定の部分文字列を別の文字列に置換する関数は？",
+        choices: ["Substitute()", "Replace()", "Swap()"],
+        correct: 1,
+        explanation: "文字列内の特定の部分を置換するには、Replace() 関数を使用します。例：Replace(\"Hello World\", \"World\", \"VBA\") は \"Hello VBA\" を返します。"
+    },
+    {
+        question: "文字列の文字コードを変換する関数は？",
+        choices: ["Convert()", "StrConv()", "CharConv()"],
+        correct: 1,
+        explanation: "文字列の文字コードを変換するには、StrConv() 関数を使用します。これは、全角/半角変換や大文字/小文字変換などに使用されます。"
+    },
+    {
+        question: "指定した書式で文字列を整形する関数は？",
+        choices: ["Format()", "StringFormat()", "FormatStr()"],
+        correct: 0,
+        explanation: "指定した書式で文字列を整形するには、Format() 関数を使用します。これは日付、時刻、数値などの書式設定に便利です。"
+    },
+    // 8-3 数値を操作する関数
+    {
+        question: "数値を指定した小数点以下の桁数に丸める関数は？",
+        choices: ["Round()", "Truncate()", "Floor()"],
+        correct: 0,
+        explanation: "Round() 関数を使用すると、数値を指定した小数点以下の桁数に丸めることができます。例：Round(3.14159, 2) は 3.14 を返します。"
+    },
+    {
+        question: "数値の絶対値を返す関数はどれですか？",
+        choices: ["Int関数", "Round関数", "Abs関数"],
+        correct: 2,
+        explanation: "Abs関数は、数値の絶対値を返します。"
+    },
+    // 8-4 データの種類を判定する関数
+    {
+        question: "変数が数値かどうかを判定する関数は？",
+        choices: ["IsNumber()", "IsNumeric()", "IsInteger()"],
+        correct: 1,
+        explanation: "IsNumeric() 関数を使用すると、変数が数値かどうかを判定できます。これは数値として解釈可能な文字列に対してもTrueを返します。"
+    },
+    // 8-5 文字列の入出力に関する関数
+    {
+        question: "ユーザーに入力を求めるダイアログボックスを表示する関数は？",
+        choices: ["InputBox()", "GetInput()", "PromptUser()"],
+        correct: 0,
+        explanation: "InputBox() 関数を使用すると、ユーザーに入力を求めるダイアログボックスを表示できます。例：userInput = InputBox(\"名前を入力してください\")"
+    },
+    // 9 シートとブックの操作
+    // 9-1 シートの操作
+    {
+        question: "新しいワークシートを追加するメソッドは？",
+        choices: ["Sheets.New()", "Worksheets.Add", "AddWorksheet()"],
+        correct: 1,
+        explanation: "新しいワークシートを追加するには Worksheets.Add メソッドを使用します。例：Worksheets.Add"
+    },
+    {
+        question: "シートを選択するために使うメソッドはどれですか？",
+        choices: ["Activate", "Select", "Copy"],
+        correct: 1,
+        explanation: "シートを選択するためには「Select」メソッドを使用します。"
+    },
+    {
+        question: "シートをコピーするために使うメソッドはどれですか？",
+        choices: ["Activate", "Select", "Copy"],
+        correct: 2,
+        explanation: "シートをコピーするためには「Copy」メソッドを使用します。"
+    },
+    // 9-2 ブックの操作
+    {
+        question: "現在のブックを保存するメソッドは？",
+        choices: ["ActiveWorkbook.Save", "ThisWorkbook.SaveAs", "Workbooks.Save"],
+        correct: 0,
+        explanation: "現在のブックを保存するには ActiveWorkbook.Save メソッドを使用します。これは現在アクティブなブックを保存します。"
+    },
+    {
+        question: "新規ブックを挿入するにはどのメソッドを使用しますか？",
+        choices: ["Open", "Add", "Insert"],
+        correct: 1,
+        explanation: "新規ブックを挿入するには「Add」メソッドを使用します。"
+    },
+    // 10 マクロの実行
+    // 10-1 VBEから実行する
+    {
+        question: "VBEでマクロを実行するショートカットキーは？",
+        choices: ["F5", "F9", "F11"],
+        correct: 0,
+        explanation: "VBEでマクロを実行するショートカットキーは F5 です。カーソルがプロシージャ内にある状態でF5を押すと、そのプロシージャが実行されます。"
+    },
+    // 10-2 Excelから実行する
+    {
+        question: "Excelからマクロを実行する際に使用されるタブは？",
+        choices: ["ホーム", "挿入", "開発"],
+        correct: 2,
+        explanation: "Excelからマクロを実行する際は、通常「開発」タブを使用します。このタブにはマクロ関連の機能が集められています。"
+    },
+    // 10-3 クイックアクセスツールバー(QAT)から実行する
+    {
+        question: "マクロをクイックアクセスツールバー(QAT)に追加する主な利点は？",
+        choices: ["マクロの実行速度が上がる", "簡単にアクセスできる", "マクロが自動的に最適化される"],
+        correct: 1,
+        explanation: "マクロをQATに追加する主な利点は、簡単にアクセスできることです。頻繁に使用するマクロをQATに追加することで、素早く実行できるようになります。"
+    },
+    // 10-4 ボタンや図形から実行する
+    {
+        question: "ワークシート上のボタンにマクロを割り当てる方法として正しいのは？",
+        choices: ["ボタンを右クリックし、「マクロの割り当て」を選択する", "VBEでボタンのコードを直接編集する", "「開発」タブから「コントロールの挿入」を選択し、ボタンを配置する"],
+        correct: 2,
+        explanation: "ワークシート上にマクロを実行するボタンを配置するには、「開発」タブから「コントロールの挿入」を選択し、ボタンを配置します。その後、マクロを割り当てることができます。"
     }
 ];
