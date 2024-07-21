@@ -19,7 +19,6 @@ const quizData = [
         correct: 0,
         explanation: "VBEは「Visual Basic Editor」の略称です。これはVBAコードを書いたり編集したりするための統合開発環境です。"
     },
-
     // 1-2 ブックとマクロの関係
     {
         question: "マクロを保存する際、どのような選択肢がありますか？",
@@ -34,7 +33,6 @@ const quizData = [
         correct: 2,
         explanation: "最も安全なセキュリティレベルは「すべてのマクロを無効にする」です。ただし、これにより正当なマクロも実行できなくなるため、通常は「デジタル署名付きマクロのみ有効にする」が推奨されます。"
     },
-
     // 2 マクロ記録
     // 2-1 マクロ記録とは
     {
@@ -55,7 +53,6 @@ const quizData = [
         correct: 1,
         explanation: "「マクロの記録」をもう一度クリックすると、マクロ記録が停止します。"
     },
-
     // 2-2 [マクロの記録] ダイアログボックスの設定項目
     {
         question: "[マクロの記録]ダイアログボックスで設定できる項目は次のうちどれですか？",
@@ -75,8 +72,6 @@ const quizData = [
         correct: 2,
         explanation: "[マクロの記録]ダイアログボックスでショートカットキーを設定する際は、Ctrlキーとの組み合わせを使用します。"
     },
-
-
     // 2-3 個人用マクロブック
     {
         question: "個人用マクロブックの特徴として正しいのはどれですか？",
@@ -90,8 +85,6 @@ const quizData = [
         correct: 1,
         explanation: "個人用マクロブックに保存すると、どのブックからでもそのマクロを使用することができます。"
     },
-
-
     // 3 モジュールとプロシージャ
     // 3-1 モジュールとは
     {
@@ -106,7 +99,6 @@ const quizData = [
         correct: 1,
         explanation: "モジュールは「挿入」メニューから挿入できます。"
     },
-
     // 3-2 プロシージャとは
     {
         question: "VBAには主に2種類のプロシージャがありますが、それらは何ですか？",
@@ -126,7 +118,6 @@ const quizData = [
         correct: 0,
         explanation: "プロシージャ名を直接記述することで、他のプロシージャを呼び出すことができます。"
     },
-
     // 3-2 プロシージャとは（追加問題）
     {
         question: "別のプロシージャを呼び出すための正しい方法は？",
@@ -146,7 +137,6 @@ const quizData = [
         correct: 0,
         explanation: "VBAで1行の途中で改行する場合は、アンダースコア(_)を使用します。これにより、コードの可読性を向上させることができます。"
     },
-
     // 4 VBAの構文
     // 4-1 オブジェクト式
     {
@@ -179,8 +169,6 @@ const quizData = [
         correct: 0,
         explanation: "セル範囲を表すには「Range」プロパティを使用します。"
     },
-
-
     // 4-1 オブジェクト式（追加問題）
     {
       question: "VBAでコレクションの要素を参照する正しい方法は？",
@@ -188,8 +176,6 @@ const quizData = [
       correct: 1,
       explanation: "VBAでコレクションの要素を参照するには、括弧()を使用します。例えば、Worksheets(1)は最初のワークシートを指します。"
     },
-
-
     // 4-2 ステートメント
     {
         question: "次のうち、正しいVBAステートメントはどれですか？",
@@ -197,8 +183,6 @@ const quizData = [
         correct: 1,
         explanation: "正しいステートメントは Range(\"A1\").Value = 10 です。これはセルA1に値10を代入するステートメントです。"
     },
-
-
     // 4-3 関数
     {
         question: "VBAで文字列の長さを取得する関数は？",
@@ -206,8 +190,6 @@ const quizData = [
         correct: 1,
         explanation: "文字列の長さを取得するには Len() 関数を使用します。例：stringLength = Len(\"Hello World\")"
     },
-
-
     // 4-4 演算子
     {
         question: "VBAで文字列を連結する演算子は？",
@@ -215,8 +197,6 @@ const quizData = [
         correct: 1,
         explanation: "VBAで文字列を連結するには & 演算子を使用します。例：\"Hello\" & \" \" & \"World\" は \"Hello World\" となります。"
     },
-
-
     // 4-4 演算子（追加問題）
     {
         question: "VBAで等しくないことを表す演算子は？",
@@ -230,8 +210,6 @@ const quizData = [
         correct: 1,
         explanation: "VBAでは、論理AND演算子として 'AND' を使用します。例：If a > 0 AND b > 0 Then ..."
     },
-
-
     // 5 変数と定数
     // 5-1 変数とは
     {
@@ -240,8 +218,6 @@ const quizData = [
         correct: 1,
         explanation: "変数の主な用途は、プログラムの実行中に一時的にデータを格納することです。これにより、後で使用するためにデータを保持したり、操作したりすることができます。"
     },
-
-
     // 5-2 変数を宣言する
     {
         question: "VBAで変数を宣言する際に使用するキーワードは？",
@@ -255,8 +231,6 @@ const quizData = [
         correct: 1,
         explanation: "変数を宣言するには「Dim」キーワードを使用します。"
     },
-
-
     // 5-3 変数に代入する
     {
         question: "次のうち、正しい変数への代入方法はどれですか？",
@@ -270,8 +244,6 @@ const quizData = [
         correct: 0,
         explanation: "変数に値を代入するには「=」記号を使用します。"
     },
-
-
     // 5-4 変数の名前
     {
         question: "VBAで有効な変数名はどれですか？",
@@ -279,8 +251,6 @@ const quizData = [
         correct: 2,
         explanation: "VBAの変数名はアルファベット、数字、アンダースコアを使用できますが、数字で始めることはできません。また、スペースは使用できません。したがって、_myVariable が有効な変数名です。"
     },
-
-
     // 5-5 変数の適用範囲
     {
         question: "VBAにおいて、プロシージャ内で宣言された変数のスコープは？",
@@ -288,8 +258,6 @@ const quizData = [
         correct: 2,
         explanation: "プロシージャ内で宣言された変数のスコープはローカルです。つまり、その変数はそのプロシージャ内でのみ使用可能です。"
     },
-
-
     // 5-6 定数とは
     {
         question: "VBAで定数を宣言するキーワードは？",
@@ -303,7 +271,6 @@ const quizData = [
         correct: 1,
         explanation: "定数を宣言するには「Const」キーワードを使用します。"
     },
-
     // 6 セルの操作
     // 6-1 セルを操作する
     {
@@ -312,8 +279,6 @@ const quizData = [
         correct: 1,
         explanation: "セルA1を参照する正しい方法は Range(\"A1\") です。これはオブジェクト式の一例で、特定のセルを指定するのに使用されます。"
     },
-
-
     // 6-2 Value プロパティ
     {
         question: "セルの値を取得するために使用するプロパティは？",
@@ -321,8 +286,6 @@ const quizData = [
         correct: 2,
         explanation: "セルの値を取得するには Value プロパティを使用します。例：cellValue = Range(\"A1\").Value"
     },
-
-
     // 6-3 セルの様子を表すプロパティ
     {
         question: "セルに表示されているテキストを取得するプロパティは？",
@@ -336,8 +299,6 @@ const quizData = [
         correct: 2,
         explanation: "セルの数式を取得するためには「Formula」プロパティを使用します。"
     },
-
-
     // 6-4 別のセルを表すプロパティ
     {
         question: "現在のセルから相対的に別のセルを参照するプロパティは？",
@@ -364,7 +325,6 @@ const quizData = [
         correct: 1,
         explanation: "Resize プロパティを使用すると、選択範囲を拡大または縮小できます。例：Range(\"A1\").Resize(2, 2) はA1:B2の範囲を選択します。"
     },
-
     //End プロパティ
     {
         question: "Endプロパティの主な用途は何ですか？",
@@ -372,8 +332,6 @@ const quizData = [
         correct: 0,
         explanation: "Endプロパティは、特定の方向の最後の使用されているセルを選択するために使用されます。例：Range(\"A1\").End(xlDown)は、A列の最後の使用されているセルを選択します。"
     },
-
-
     // 6-5 セルを表すその他の単語（追加問題）
     {
         question: "現在アクティブなセルを参照するためのプロパティは？",
@@ -387,8 +345,6 @@ const quizData = [
         correct: 2,
         explanation: "現在選択されている範囲を参照するには、Selection プロパティを使用します。"
     },
-
-
     // 6-6 セルのメソッド
     {
         question: "特定のセルを選択状態にするメソッドは？",
@@ -396,7 +352,6 @@ const quizData = [
         correct: 1,
         explanation: "特定のセルを選択状態にするには Select メソッドを使用します。例：Range(\"A1\").Select"
     },
-
     // 6-6 セルのメソッド（追加問題）
     {
         question: "セルの内容をクリアするメソッドは？",
@@ -419,8 +374,6 @@ const quizData = [
         correct: 1,
         explanation: "A1からC3までのセル範囲を指定するには、Range(\"A1:C3\") を使用します。コロン (:) を使って範囲を指定します。"
     },
-
-
     // 6-8 行や列の指定
     {
         question: "3行目全体を指定する正しい方法は？",
@@ -428,8 +381,6 @@ const quizData = [
         correct: 1,
         explanation: "3行目全体を指定するには Rows(3) を使用します。これは3行目のすべてのセルを選択します。"
     },
-
-
     // 7 ステートメント（続き）
     // 7-1 For...Nextステートメント
     {
@@ -438,8 +389,6 @@ const quizData = [
         correct: 0,
         explanation: "VBAでは、For i = 1 To 10 ... Next が正しい For...Next ループの書き方です。これは1から10まで繰り返し処理を行います。"
     },
-
-
     // 7-2 Ifステートメント
     {
         question: "VBAで複数の条件を持つIf文を書く場合、どのキーワードを使用しますか？",
@@ -447,8 +396,6 @@ const quizData = [
         correct: 1,
         explanation: "VBAでは、複数の条件を持つIf文を書く場合、ElseIf キーワードを使用します。例：If ... ElseIf ... Else ... End If"
     },
-
-
     // 7-3 Withステートメント
     {
         question: "Withステートメントの主な目的は何ですか？",
@@ -456,8 +403,6 @@ const quizData = [
         correct: 1,
         explanation: "Withステートメントの主な目的は、オブジェクト名の繰り返しを避けることです。これにより、コードが簡潔になり、読みやすくなります。"
     },
-
-
     // 8 関数
     // 8-1 日付や時刻を操作する関数
     {
@@ -466,8 +411,6 @@ const quizData = [
         correct: 1,
         explanation: "現在の日付と時刻を取得するには Now() 関数を使用します。この関数は現在の日付と時刻を返します。"
     },
-
-
     // 8-2 文字列を操作する関数
     {
         question: "文字列の一部を取り出す関数は次のうちどれですか？",
@@ -475,8 +418,6 @@ const quizData = [
         correct: 2,
         explanation: "VBAでは、Mid() 関数を使用して文字列の一部を取り出します。例：Mid(\"Hello\", 2, 2) は 'el' を返します。"
     },
-
-
     // 8-2 文字列を操作する関数（追加問題）
     {
         question: "文字列を小文字に変換する関数は？",
@@ -508,8 +449,6 @@ const quizData = [
         correct: 0,
         explanation: "指定した書式で文字列を整形するには、Format() 関数を使用します。これは日付、時刻、数値などの書式設定に便利です。"
     },
-
-
     // 8-3 数値を操作する関数
     {
         question: "数値を指定した小数点以下の桁数に丸める関数は？",
@@ -523,8 +462,6 @@ const quizData = [
         correct: 2,
         explanation: "Abs関数は、数値の絶対値を返します。"
     },
-
-
     // 8-4 データの種類を判定する関数
     {
         question: "変数が数値かどうかを判定する関数は？",
@@ -532,8 +469,6 @@ const quizData = [
         correct: 1,
         explanation: "IsNumeric() 関数を使用すると、変数が数値かどうかを判定できます。これは数値として解釈可能な文字列に対してもTrueを返します。"
     },
-
-
     // 8-5 文字列の入出力に関する関数
     {
         question: "ユーザーに入力を求めるダイアログボックスを表示する関数は？",
@@ -541,8 +476,6 @@ const quizData = [
         correct: 0,
         explanation: "InputBox() 関数を使用すると、ユーザーに入力を求めるダイアログボックスを表示できます。例：userInput = InputBox(\"名前を入力してください\")"
     },
-
-
     // 9 シートとブックの操作
     // 9-1 シートの操作
     {
@@ -551,7 +484,6 @@ const quizData = [
         correct: 1,
         explanation: "新しいワークシートを追加するには Worksheets.Add メソッドを使用します。例：Worksheets.Add"
     },
-
     {
         question: "シートを選択するために使うメソッドはどれですか？",
         choices: ["Activate", "Select", "Copy"],
@@ -564,8 +496,6 @@ const quizData = [
         correct: 2,
         explanation: "シートをコピーするためには「Copy」メソッドを使用します。"
     },
-
-
     // 9-2 ブックの操作
     {
         question: "現在のブックを保存するメソッドは？",
@@ -579,8 +509,6 @@ const quizData = [
         correct: 1,
         explanation: "新規ブックを挿入するには「Add」メソッドを使用します。"
     },
-
-
     // 10 マクロの実行
     // 10-1 VBEから実行する
     {
@@ -589,8 +517,6 @@ const quizData = [
         correct: 0,
         explanation: "VBEでマクロを実行するショートカットキーは F5 です。カーソルがプロシージャ内にある状態でF5を押すと、そのプロシージャが実行されます。"
     },
-
-
     // 10-2 Excelから実行する
     {
         question: "Excelからマクロを実行する際に使用されるタブは？",
@@ -598,8 +524,6 @@ const quizData = [
         correct: 2,
         explanation: "Excelからマクロを実行する際は、通常「開発」タブを使用します。このタブにはマクロ関連の機能が集められています。"
     },
-
-
     // 10-3 クイックアクセスツールバー(QAT)から実行する
     {
         question: "マクロをクイックアクセスツールバー(QAT)に追加する主な利点は？",
@@ -607,8 +531,6 @@ const quizData = [
         correct: 1,
         explanation: "マクロをQATに追加する主な利点は、簡単にアクセスできることです。頻繁に使用するマクロをQATに追加することで、素早く実行できるようになります。"
     },
-
-
     // 10-4 ボタンや図形から実行する
     {
         question: "ワークシート上のボタンにマクロを割り当てる方法として正しいのは？",
@@ -616,6 +538,4 @@ const quizData = [
         correct: 2,
         explanation: "ワークシート上にマクロを実行するボタンを配置するには、「開発」タブから「コントロールの挿入」を選択し、ボタンを配置します。その後、マクロを割り当てることができます。"
     }
-
-
 ];
