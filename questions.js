@@ -74,7 +74,7 @@ const quizData = [
         choices: ["Alt", "Shift", "Ctrl"],
         correct: 2,
         explanation: "[マクロの記録]ダイアログボックスでショートカットキーを設定する際は、Ctrlキーとの組み合わせを使用します。"
-    }
+    },
 
 
     // 2-3 個人用マクロブック
@@ -506,7 +506,7 @@ const quizData = [
         choices: ["Format()", "StringFormat()", "FormatStr()"],
         correct: 0,
         explanation: "指定した書式で文字列を整形するには、Format() 関数を使用します。これは日付、時刻、数値などの書式設定に便利です。"
-    }
+    },
 
 
     // 8-3 数値を操作する関数
