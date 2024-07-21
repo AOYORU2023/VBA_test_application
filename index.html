@@ -39,10 +39,14 @@
             display: block; 
             width: 100%; 
             margin: 10px 0; 
-            text-align: center;
-            font-size: 18px;
+            text-align: left;
+            font-size: 16px;
             padding: 15px 20px;
             background-color: #3498db; /* 青色の選択肢ボタン */
+            white-space: normal;
+            word-wrap: break-word;
+            line-height: 1.4;
+            min-height: 60px;
         }
         #choices button:hover {
             background-color: #2980b9; /* ホバー時の色 */
@@ -75,11 +79,17 @@
             font-weight: bold;
             font-size: 18px;
         }
+        #progress {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
     </style>
 </head>
 <body>
     <div id="quiz">
         <h1>VBAベーシック検定クイズ</h1>
+        <p id="progress"></p>
         <p id="question"></p>
         <div id="choices"></div>
         <p id="result"></p>
@@ -94,9 +104,11 @@
         const resultEl = document.getElementById("result");
         const explanationEl = document.getElementById("explanation");
         const nextButton = document.getElementById("next");
+        const progressEl = document.getElementById("progress");
 
         function loadQuestion() {
             const quiz = quizData[currentQuestion];
+            progressEl.textContent = `問題 ${currentQuestion + 1} / ${quizData.length}`;
             questionEl.textContent = quiz.question;
             choicesEl.innerHTML = "";
             resultEl.textContent = "";
@@ -132,6 +144,7 @@
                 loadQuestion();
             } else {
                 questionEl.textContent = "クイズ終了！お疲れ様でした。";
+                progressEl.textContent = "";
                 choicesEl.innerHTML = "";
                 resultEl.textContent = "";
                 explanationEl.style.display = "none";
