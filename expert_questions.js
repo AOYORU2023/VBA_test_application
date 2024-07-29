@@ -301,5 +301,151 @@ const quizData = [
         ],
         correct: 0,
         explanation: "VBAで文字列を結合する最も一般的で効率的な方法は、`&` 演算子を使用することです。例: `fullName = firstName & \" \" & lastName`。大量の文字列を結合する場合は、`Join()` 関数も効率的ですが、通常の結合操作では `&` が最適です。"
+    },
+
+    
+    // 3 ステートメント
+    {
+        question: "VBAにおけるステートメントの主な役割は何ですか？",
+        choices: [
+            "変数を宣言する",
+            "プログラムの実行フローを制御する",
+            "関数を定義する"
+        ],
+        correct: 1,
+        explanation: "ステートメントの主な役割は、プログラムの実行フローを制御することです。これには条件分岐、ループ、サブルーチンの終了などが含まれます。適切なステートメントを使用することで、プログラムの動作を効果的に制御できます。"
+    },
+    // 3-1 Exit ステートメント
+    {
+        question: "Exit ステートメントの主な用途は何ですか？",
+        choices: [
+            "プログラム全体を終了する",
+            "現在の制御構造（ループやプロシージャ）を即座に抜ける",
+            "変数の値を初期化する"
+        ],
+        correct: 1,
+        explanation: "Exit ステートメントの主な用途は、現在の制御構造（ループやプロシージャ）を即座に抜けることです。これにより、特定の条件が満たされた場合に処理を中断し、効率的にコードの実行を制御できます。"
+    },
+    // 3-1-1 Exit Sub ステートメント/Exit Function ステートメント
+    {
+        question: "Exit Sub ステートメントと Exit Function ステートメントの違いは何ですか？",
+        choices: [
+            "違いはない",
+            "Exit Sub はサブプロシージャを、Exit Function は関数を終了する",
+            "Exit Sub は値を返せないが、Exit Function は値を返せる"
+        ],
+        correct: 2,
+        explanation: "Exit Sub はサブプロシージャを即座に終了し、Exit Function は関数を即座に終了します。主な違いは、Exit Function を使用する場合、関数の戻り値を設定してから終了することができる点です。例えば、`Function MyFunc() As Integer: MyFunc = 5: Exit Function: End Function`"
+    },
+    // 3-1-2 Exit For ステートメント
+    {
+        question: "For...Next ループ内で Exit For ステートメントを使用する主な目的は何ですか？",
+        choices: [
+            "ループのカウンタを0にリセットする",
+            "特定の条件が満たされた時点でループを終了する",
+            "ループを無限に続ける"
+        ],
+        correct: 1,
+        explanation: "Exit For ステートメントの主な目的は、特定の条件が満たされた時点でFor...Nextループを即座に終了することです。これにより、ループの途中で必要な条件が満たされた場合に、残りの不要な繰り返しをスキップして処理効率を向上させることができます。"
+    },
+    // 3-1-3 Exit Do ステートメント
+    {
+        question: "Do...Loop 内で Exit Do ステートメントを使用する際の注意点は何ですか？",
+        choices: [
+            "使用できるのは1回だけである",
+            "必ず条件文と組み合わせて使用する必要がある",
+            "ループが無限に続く可能性があるため、適切な条件下でのみ使用する"
+        ],
+        correct: 2,
+        explanation: "Exit Do ステートメントを使用する際の主な注意点は、適切な条件下でのみ使用することです。不適切に使用すると、ループが意図せず終了したり、逆に無限ループになる可能性があります。通常、If文と組み合わせて特定の条件が満たされた場合にのみExit Doを実行するようにします。"
+    },
+    // 3-2 Select Case ステートメント
+    {
+        question: "Select Case ステートメントの主な利点は何ですか？",
+        choices: [
+            "常に If...ElseIf より高速に動作する",
+            "複数の条件分岐を簡潔に記述でき、コードの可読性が向上する",
+            "無限ループを簡単に作成できる"
+        ],
+        correct: 1,
+        explanation: "Select Case ステートメントの主な利点は、複数の条件分岐を簡潔に記述でき、コードの可読性が向上することです。特に、単一の変数や式に基づいて多くの分岐がある場合に有効です。例: `Select Case score: Case 90 To 100: grade = \"A\": Case 80 To 89: grade = \"B\": ... End Select`"
+    },
+    // 3-3 Do...Loopステートメント
+    {
+        question: "Do...Loop ステートメントの中で、ループの継続条件を最初に評価するのは次のうちどれですか？",
+        choices: [
+            "Do While...Loop",
+            "Do...Loop While",
+            "Do Until...Loop"
+        ],
+        correct: 0,
+        explanation: "Do While...Loop 構造では、ループの継続条件が最初に評価されます。これにより、条件が最初から偽の場合、ループ本体が一度も実行されない可能性があります。一方、Do...Loop While では、ループ本体が少なくとも1回は実行されます。例: `Do While count < 10: ... Loop`"
+    },
+    // 3-4 For Each...Nextステートメント
+    {
+        question: "For Each...Next ステートメントの主な用途は何ですか？",
+        choices: [
+            "特定の回数だけループを繰り返す",
+            "コレクションや配列の各要素に対して処理を行う",
+            "無限ループを作成する"
+        ],
+        correct: 1,
+        explanation: "For Each...Next ステートメントの主な用途は、コレクションや配列の各要素に対して処理を行うことです。これにより、要素の数を事前に知る必要なく、すべての要素を簡単に処理できます。例: `For Each cell In Range(\"A1:D10\"): ... Next cell`"
+    },
+    // 3-4-1 コレクションを操作する
+    {
+        question: "VBAでコレクションを操作する際のFor Each...Nextの利点は何ですか？",
+        choices: [
+            "コレクションの要素を逆順に処理できる",
+            "インデックスを気にせずに各要素にアクセスできる",
+            "コレクションのサイズを動的に変更できる"
+        ],
+        correct: 1,
+        explanation: "For Each...Nextを使用してコレクションを操作する主な利点は、インデックスを気にせずに各要素に簡単にアクセスできることです。これにより、コードがシンプルになり、エラーのリスクも減少します。例: `For Each item In myCollection: Debug.Print item: Next item`"
+    },
+    // 3-4-2 セル範囲を操作する
+    {
+        question: "Excelのセル範囲を操作する際、For Each...Nextを使用する利点は何ですか？",
+        choices: [
+            "セルの値を変更できない",
+            "非表示のセルをスキップできる",
+            "行や列を意識せずに各セルにアクセスできる"
+        ],
+        correct: 2,
+        explanation: "For Each...Nextを使用してExcelのセル範囲を操作する主な利点は、行や列を意識せずに各セルに簡単にアクセスできることです。これにより、複雑な範囲でも簡潔にコードを書くことができます。例: `For Each cell In Range(\"A1:Z100\"): cell.Value = cell.Value * 2: Next cell`"
+    },
+    // 3-4-3 配列を操作する
+    {
+        question: "VBAで配列を操作する際、For Each...Nextを使用する場合の制限は何ですか？",
+        choices: [
+            "多次元配列には使用できない",
+            "配列の要素を変更できない",
+            "配列のインデックスを取得できない"
+        ],
+        correct: 2,
+        explanation: "For Each...Nextで配列を操作する際の主な制限は、配列のインデックスを直接取得できないことです。要素の値にはアクセスできますが、その要素が配列の何番目にあるかを知ることはできません。インデックスが必要な場合は、通常のForループを使用する必要があります。"
+    },
+    // 3-5 Ifステートメント
+    {
+        question: "VBAのIf...Then...Else構造で、複数の条件を1行で書く場合の正しい方法は次のうちどれですか？",
+        choices: [
+            "If x > 0 Then y = 1 Else If x < 0 Then y = -1 Else y = 0",
+            "If x > 0 Then y = 1 ElseIf x < 0 Then y = -1 Else y = 0",
+            "If x > 0: y = 1 ElseIf x < 0: y = -1 Else: y = 0"
+        ],
+        correct: 0,
+        explanation: "1行でIf...Then...Else構造を書く場合、`If x > 0 Then y = 1 Else If x < 0 Then y = -1 Else y = 0` が正しい方法です。この形式では、`ElseIf`ではなく`Else If`を使用し、コロン(`:`)ではなくスペースで区切ります。複数行の場合は異なる構文を使用します。"
+    },
+    // 3-5-1 複数条件による条件分岐
+    {
+        question: "VBAで複数の条件を組み合わせて条件分岐を行う際、どの論理演算子を使用しますか？",
+        choices: [
+            "AND と OR",
+            "& と |",
+            "+ と -"
+        ],
+        correct: 0,
+        explanation: "VBAで複数の条件を組み合わせる際は、`AND` と `OR` 論理演算子を使用します。`AND` は両方の条件が真の場合に真を返し、`OR` はいずれかの条件が真の場合に真を返します。例: `If age >= 18 AND country = \"Japan\" Then ... `"
     }
+    
 ];
