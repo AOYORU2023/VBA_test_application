@@ -516,6 +516,28 @@ const quizData = [
         ],
         correct: 1,
         explanation: "`FSO.CreateFolder \"C:\\NewFolder\"` が正しいコードです。FileSystemObjectの CreateFolder メソッドを使用して新しいフォルダを作成します。このメソッドは指定されたパスに新しいフォルダを作成し、作成されたFolderオブジェクトを返します。既にフォルダが存在する場合はエラーが発生するため、通常はフォルダの存在チェックと組み合わせて使用します。"
-    }
+    },
+
+    // Additional questions for deeper understanding
+    {
+        question: "VBAでファイルの存在を確認する最も一般的な方法は？",
+        choices: [
+            "If File.Exists(filePath) Then",
+            "If Dir(filePath) <> \"\" Then",
+            "If FSO.FileExists(filePath) Then"
+        ],
+        correct: 2,
+        explanation: "`If FSO.FileExists(filePath) Then` が最も一般的で信頼性の高い方法です。FileSystemObjectの FileExists メソッドは、指定されたパスにファイルが存在するかどうかをブール値で返します。これは、ファイルの存在確認を行う前に必ず使用すべきメソッドです。"
+    },
+    {
+        question: "VBAでファイルパスからファイル名のみを取得する関数は？",
+        choices: [
+            "Right(filePath, Len(filePath) - InStrRev(filePath, \"\\\"))",
+            "FSO.GetFileName(filePath)",
+            "Mid(filePath, InStrRev(filePath, \"\\\") + 1)"
+        ],
+        correct: 1,
+        explanation: "`FSO.GetFileName(filePath)` が正しい方法です。FileSystemObjectの GetFileName メソッドは、フルパスからファイル名部分のみを簡単に抽出します。これは、パスの操作を行う際に非常に便利で、エラーが少ない方法です。"
+    }    
     
 ];
