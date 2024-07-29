@@ -470,5 +470,28 @@ const quizData = [
         ],
         correct: 0,
         explanation: "`Workbooks.Open(\"C:\\path\\to\\file.xlsx\")` が正しいコードです。このメソッドは指定されたパスのExcelブックを開き、新しく開いたWorkbookオブジェクトを返します。オプションのパラメータを使用して、読み取り専用で開くなどの追加設定も可能です。"
+    } ,
+
+    // 4-1-1 フォルダー内の複数のブックを開く
+    {
+        question: "フォルダ内のすべてのExcelファイルを開くためのVBAコードとして正しいものは？",
+        choices: [
+            "For Each file In Folder.Files: Workbooks.Open file.Path: Next file",
+            "For Each file In Directory.Files: OpenWorkbook file.Name: Next file",
+            "For Each file In Folder: If Right(file.Name, 4) = \".xls\" Then Workbooks.Open file: Next file"
+        ],
+        correct: 0,
+        explanation: "`For Each file In Folder.Files: Workbooks.Open file.Path: Next file` が正しいアプローチです。このコードはFSOを使用してフォルダ内のファイルを列挙し、各ファイルのパスを使ってWorkbooks.Openメソッドでブックを開きます。ただし、実際の使用時には、ファイル拡張子のチェックを追加するとより安全です。"
+    },
+    // 4-2 ブックを保存する
+    {
+        question: "VBAで現在のブックを新しい名前で保存する正しいコードは？",
+        choices: [
+            "ActiveWorkbook.Save As \"NewFileName.xlsx\"",
+            "ThisWorkbook.SaveAs Filename:=\"NewFileName.xlsx\"",
+            "Workbooks(1).SaveAs \"NewFileName.xlsx\""
+        ],
+        correct: 1,
+        explanation: "`ThisWorkbook.SaveAs Filename:=\"NewFileName.xlsx\"` が正しいコードです。SaveAsメソッドを使用して、現在のブックを新しい名前で保存します。Filenameパラメータは明示的に指定することをお勧めします。また、ThisWorkbookは現在のVBAプロジェクトが含まれるブックを指します。"
     }    
 ];
