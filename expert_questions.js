@@ -504,5 +504,18 @@ const quizData = [
         ],
         correct: 1,
         explanation: "`FSO.CopyFile` メソッドを使用してファイルをコピーします。使用例：`FSO.CopyFile \"C:\\source\\file.txt\", \"C:\\destination\\file.txt\"` このメソッドは、ソースファイルパスと目的地ファイルパスを引数に取ります。オプションで、上書きを許可するブール値を第3引数に指定できます。"
+    },
+
+    // 4-4 フォルダーを操作する
+    {
+        question: "VBAで新しいフォルダを作成するための正しいコードは？",
+        choices: [
+            "MkDir \"C:\\NewFolder\"",
+            "FSO.CreateFolder \"C:\\NewFolder\"",
+            "Folder.Create \"C:\\NewFolder\""
+        ],
+        correct: 1,
+        explanation: "`FSO.CreateFolder \"C:\\NewFolder\"` が正しいコードです。FileSystemObjectの CreateFolder メソッドを使用して新しいフォルダを作成します。このメソッドは指定されたパスに新しいフォルダを作成し、作成されたFolderオブジェクトを返します。既にフォルダが存在する場合はエラーが発生するため、通常はフォルダの存在チェックと組み合わせて使用します。"
     }
+    
 ];
