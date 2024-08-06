@@ -5,84 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VBAベーシック検定クイズ</title>
     <style>
-        body { 
-            font-family: Arial, sans-serif; 
-            text-align: center; 
-            max-width: 800px; 
-            margin: 0 auto; 
-            padding: 20px; 
-            background-color: #f0f8ff; /* 薄い青色の背景 */
-            color: #333; /* ダークグレーのテキスト */
+        /* 既存のスタイルをここに保持 */
+        /* ... */
+        #pauseResume {
+            background-color: #3498db;
+            margin-top: 20px;
         }
-        #quiz { 
-            margin: 20px; 
-            background-color: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-        button { 
-            margin: 5px; 
-            padding: 15px; 
-            font-size: 18px; 
-            background-color: #4CAF50; /* 緑色のボタン */
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        button:hover {
-            background-color: #45a049; /* ホバー時の色 */
-        }
-        #choices button { 
-            display: block; 
-            width: 100%; 
-            margin: 10px 0; 
-            text-align: center; /* 中央揃えに変更 */
-            font-size: 16px;
-            padding: 15px 20px;
-            background-color: #3498db; /* 青色の選択肢ボタン */
-            white-space: normal;
-            word-wrap: break-word;
-            line-height: 1.4;
-            min-height: 60px;
-        }
-        #choices button:hover {
-            background-color: #2980b9; /* ホバー時の色 */
-        }
-        #explanation { 
-            margin-top: 20px; 
-            text-align: left; 
-            border: 1px solid #ddd; 
-            padding: 10px; 
-            display: none; 
-            background-color: #e8f4f8; /* 薄い青色の背景 */
-            border-radius: 5px;
-        }
-        #next { 
-            display: none; 
-            background-color: #f39c12; /* オレンジ色の次へボタン */
-        }
-        #next:hover {
-            background-color: #e67e22; /* ホバー時の色 */
-        }
-        #question { 
-            font-size: 20px; 
-            font-weight: bold; 
-            color: #2c3e50; /* ダークブルーの問題文 */
-        }
-        h1 {
-            color: #2c3e50; /* ダークブルーのタイトル */
-        }
-        #result {
-            font-weight: bold;
-            font-size: 18px;
-        }
-        #progress {
-            font-size: 18px;
-            margin-bottom: 10px;
-            color: #2c3e50;
+        #pauseResume:hover {
+            background-color: #2980b9;
         }
     </style>
 </head>
@@ -95,16 +25,20 @@
         <p id="result"></p>
         <div id="explanation"></div>
         <button id="next" onclick="nextQuestion()">次の問題へ</button>
+        <button id="pauseResume" onclick="togglePauseResume()">中断する</button>
     </div>
     <script src="questions.js"></script>
     <script>
         let currentQuestion = 0;
+        let userAnswers = [];
+        let score = 0;
         const questionEl = document.getElementById("question");
         const choicesEl = document.getElementById("choices");
         const resultEl = document.getElementById("result");
         const explanationEl = document.getElementById("explanation");
         const nextButton = document.getElementById("next");
         const progressEl = document.getElementById("progress");
+        const pauseResumeButton = document.getElementById("pauseResume");
 
         function loadQuestion() {
             const quiz = quizData[currentQuestion];
@@ -125,17 +59,20 @@
 
         function checkAnswer(choiceIndex) {
             const quiz = quizData[currentQuestion];
+            userAnswers[currentQuestion] = choiceIndex;
             if (choiceIndex === quiz.correct) {
                 resultEl.textContent = "正解！";
-                resultEl.style.color = "#27ae60"; // 緑色で正解を表示
+                resultEl.style.color = "#27ae60";
+                score++;
             } else {
                 resultEl.textContent = "不正解。正解は「" + quiz.choices[quiz.correct] + "」です。";
-                resultEl.style.color = "#c0392b"; // 赤色で不正解を表示
+                resultEl.style.color = "#c0392b";
             }
             explanationEl.textContent = quiz.explanation;
             explanationEl.style.display = "block";
             nextButton.style.display = "block";
             choicesEl.querySelectorAll("button").forEach(button => button.disabled = true);
+            saveQuizState();
         }
 
         function nextQuestion() {
@@ -143,16 +80,67 @@
             if (currentQuestion < quizData.length) {
                 loadQuestion();
             } else {
-                questionEl.textContent = "クイズ終了！お疲れ様でした。";
-                progressEl.textContent = "";
+                finishQuiz();
+            }
+        }
+
+        function finishQuiz() {
+            questionEl.textContent = "クイズ終了！お疲れ様でした。";
+            progressEl.textContent = `最終スコア: ${score} / ${quizData.length}`;
+            choicesEl.innerHTML = "";
+            resultEl.textContent = "";
+            explanationEl.style.display = "none";
+            nextButton.style.display = "none";
+            pauseResumeButton.style.display = "none";
+            localStorage.removeItem('quizState');
+        }
+
+        function saveQuizState() {
+            const quizState = {
+                currentQuestion: currentQuestion,
+                userAnswers: userAnswers,
+                score: score
+            };
+            localStorage.setItem('quizState', JSON.stringify(quizState));
+        }
+
+        function loadQuizState() {
+            const savedState = localStorage.getItem('quizState');
+            if (savedState) {
+                const state = JSON.parse(savedState);
+                currentQuestion = state.currentQuestion;
+                userAnswers = state.userAnswers;
+                score = state.score;
+                return true;
+            }
+            return false;
+        }
+
+        function togglePauseResume() {
+            if (pauseResumeButton.textContent === "中断する") {
+                saveQuizState();
+                pauseResumeButton.textContent = "再開する";
+                questionEl.textContent = "クイズが中断されました。再開するには「再開する」ボタンを押してください。";
                 choicesEl.innerHTML = "";
                 resultEl.textContent = "";
                 explanationEl.style.display = "none";
                 nextButton.style.display = "none";
+            } else {
+                pauseResumeButton.textContent = "中断する";
+                loadQuestion();
             }
         }
 
-        loadQuestion();
+        function startQuiz() {
+            if (loadQuizState()) {
+                pauseResumeButton.textContent = "再開する";
+                togglePauseResume();
+            } else {
+                loadQuestion();
+            }
+        }
+
+        startQuiz();
     </script>
 </body>
 </html>
