@@ -164,7 +164,6 @@
             nextButton.style.display = "none";
             pauseResumeButton.style.display = "none";
             restartButton.style.display = "inline-block";
-            localStorage.removeItem('quizState');
             localStorage.removeItem(`quizState_${QUIZ_ID}`);
         }
 
@@ -216,8 +215,7 @@
         }
 
         function restartQuiz() {
-            localStorage.removeItem(`quizState_${QUIZ_ID}`);            
-            localStorage.removeItem('quizState');
+            localStorage.removeItem(`quizState_${QUIZ_ID}`);
             currentQuestion = 0;
             userAnswers = [];
             score = 0;
