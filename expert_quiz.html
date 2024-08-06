@@ -84,13 +84,6 @@
             margin-bottom: 10px;
             color: #2c3e50;
         }
-        #pauseResume, #restart {
-            background-color: #3498db;
-            margin-top: 20px;
-        }
-        #pauseResume:hover, #restart:hover {
-            background-color: #2980b9;
-        }        
     </style>
 </head>
 <body>
@@ -104,24 +97,16 @@
         <button id="next" onclick="nextQuestion()">次の問題へ</button>
     </div>
     <script src="expert_questions.js"></script>
-        <script>
-        const QUIZ_ID = "vba_expert_1"; // エキスパート検定用のユニークID
-
+    <script>
         let currentQuestion = 0;
-        let userAnswers = [];
-        let score = 0;
-        let isPaused = false;
         const questionEl = document.getElementById("question");
         const choicesEl = document.getElementById("choices");
         const resultEl = document.getElementById("result");
         const explanationEl = document.getElementById("explanation");
         const nextButton = document.getElementById("next");
         const progressEl = document.getElementById("progress");
-        const pauseResumeButton = document.getElementById("pauseResume");
-        const restartButton = document.getElementById("restart");
 
         function loadQuestion() {
-            if (isPaused) return;
             const quiz = quizData[currentQuestion];
             progressEl.textContent = `問題 ${currentQuestion + 1} / ${quizData.length}`;
             questionEl.textContent = quiz.question;
@@ -129,7 +114,6 @@
             resultEl.textContent = "";
             explanationEl.style.display = "none";
             nextButton.style.display = "none";
-            restartButton.style.display = "none";
 
             quiz.choices.forEach((choice, index) => {
                 const button = document.createElement("button");
@@ -137,26 +121,21 @@
                 button.onclick = () => checkAnswer(index);
                 choicesEl.appendChild(button);
             });
-            pauseResumeButton.textContent = "中断する";
-            pauseResumeButton.style.display = "inline-block";
         }
 
         function checkAnswer(choiceIndex) {
             const quiz = quizData[currentQuestion];
-            userAnswers[currentQuestion] = choiceIndex;
             if (choiceIndex === quiz.correct) {
                 resultEl.textContent = "正解！";
-                resultEl.style.color = "#27ae60";
-                score++;
+                resultEl.style.color = "#27ae60"; // 緑色で正解を表示
             } else {
                 resultEl.textContent = "不正解。正解は「" + quiz.choices[quiz.correct] + "」です。";
-                resultEl.style.color = "#c0392b";
+                resultEl.style.color = "#c0392b"; // 赤色で不正解を表示
             }
             explanationEl.textContent = quiz.explanation;
             explanationEl.style.display = "block";
             nextButton.style.display = "block";
             choicesEl.querySelectorAll("button").forEach(button => button.disabled = true);
-            saveQuizState();
         }
 
         function nextQuestion() {
@@ -164,97 +143,16 @@
             if (currentQuestion < quizData.length) {
                 loadQuestion();
             } else {
-                finishQuiz();
-            }
-        }
-
-        function finishQuiz() {
-            questionEl.textContent = "クイズ終了！お疲れ様でした。";
-            progressEl.textContent = `最終スコア: ${score} / ${quizData.length}`;
-            choicesEl.innerHTML = "";
-            resultEl.textContent = "";
-            explanationEl.style.display = "none";
-            nextButton.style.display = "none";
-            pauseResumeButton.style.display = "none";
-            restartButton.style.display = "inline-block";
-            localStorage.removeItem(`quizState_${QUIZ_ID}`);
-        }
-
-        function saveQuizState() {
-            const quizState = {
-                currentQuestion: currentQuestion,
-                userAnswers: userAnswers,
-                score: score,
-                isPaused: isPaused,
-                timestamp: new Date().getTime()
-            };
-            localStorage.setItem(`quizState_${QUIZ_ID}`, JSON.stringify(quizState));
-        }
-
-        function loadQuizState() {
-            const savedState = localStorage.getItem(`quizState_${QUIZ_ID}`);
-            if (savedState) {
-                const state = JSON.parse(savedState);
-                // オプション: 有効期限のチェック（例：7日間）
-                if (new Date().getTime() - state.timestamp > 7 * 24 * 60 * 60 * 1000) {
-                    localStorage.removeItem(`quizState_${QUIZ_ID}`);
-                    return false;
-                }
-                currentQuestion = state.currentQuestion;
-                userAnswers = state.userAnswers;
-                score = state.score;
-                isPaused = state.isPaused;
-                return true;
-            }
-            return false;
-        }
-
-        function togglePauseResume() {
-            isPaused = !isPaused;
-            if (isPaused) {
-                saveQuizState();
-                pauseResumeButton.textContent = "再開する";
-                questionEl.textContent = "クイズが中断されました。再開するには「再開する」ボタンを押してください。";
+                questionEl.textContent = "クイズ終了！お疲れ様でした。";
+                progressEl.textContent = "";
                 choicesEl.innerHTML = "";
                 resultEl.textContent = "";
                 explanationEl.style.display = "none";
                 nextButton.style.display = "none";
-                restartButton.style.display = "inline-block";
-            } else {
-                pauseResumeButton.textContent = "中断する";
-                loadQuestion();
-                restartButton.style.display = "none";
             }
         }
 
-        function restartQuiz() {
-            localStorage.removeItem(`quizState_${QUIZ_ID}`);
-            currentQuestion = 0;
-            userAnswers = [];
-            score = 0;
-            isPaused = false;
-            loadQuestion();
-        }
-
-        function startQuiz() {
-            if (loadQuizState()) {
-                if (isPaused) {
-                    pauseResumeButton.textContent = "再開する";
-                    questionEl.textContent = "クイズが中断されています。再開するには「再開する」ボタンを押してください。";
-                    choicesEl.innerHTML = "";
-                    resultEl.textContent = "";
-                    explanationEl.style.display = "none";
-                    nextButton.style.display = "none";
-                    restartButton.style.display = "inline-block";
-                } else {
-                    loadQuestion();
-                }
-            } else {
-                loadQuestion();
-            }
-        }
-
-        startQuiz();
+        loadQuestion();
     </script>
 </body>
 </html>
