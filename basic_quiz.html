@@ -92,6 +92,8 @@
     </div>
     <script src="questions.js"></script>
     <script>
+        const QUIZ_ID = "vba_basic_1"; // 各クイズページでユニークなIDを設定
+        
         let currentQuestion = 0;
         let userAnswers = [];
         let score = 0;
@@ -163,6 +165,7 @@
             pauseResumeButton.style.display = "none";
             restartButton.style.display = "inline-block";
             localStorage.removeItem('quizState');
+            localStorage.removeItem(`quizState_${QUIZ_ID}`);
         }
 
         function saveQuizState() {
@@ -170,15 +173,21 @@
                 currentQuestion: currentQuestion,
                 userAnswers: userAnswers,
                 score: score,
-                isPaused: isPaused
+                isPaused: isPaused,
+                timestamp: new Date().getTime()
             };
-            localStorage.setItem('quizState', JSON.stringify(quizState));
+            localStorage.setItem(`quizState_${QUIZ_ID}`, JSON.stringify(quizState));
         }
 
         function loadQuizState() {
-            const savedState = localStorage.getItem('quizState');
+            const savedState = localStorage.getItem(`quizState_${QUIZ_ID}`);
             if (savedState) {
                 const state = JSON.parse(savedState);
+                // オプション: 有効期限のチェック（例：7日間）
+                if (new Date().getTime() - state.timestamp > 7 * 24 * 60 * 60 * 1000) {
+                    localStorage.removeItem(`quizState_${QUIZ_ID}`);
+                    return false;
+                }
                 currentQuestion = state.currentQuestion;
                 userAnswers = state.userAnswers;
                 score = state.score;
@@ -207,6 +216,7 @@
         }
 
         function restartQuiz() {
+            localStorage.removeItem(`quizState_${QUIZ_ID}`);            
             localStorage.removeItem('quizState');
             currentQuestion = 0;
             userAnswers = [];
