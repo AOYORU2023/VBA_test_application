@@ -3,78 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VBA検定クイズ - ホーム</title>
+    <title>プログラミングクイズ</title>
     <style>
         body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f0f8ff;
-            color: #333;
+            font-family: Arial, sans-serif;
             line-height: 1.6;
             margin: 0;
-            padding: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
         }
         .container {
-            max-width: 800px;
+            max-width: 600px;
             margin: 0 auto;
-            padding: 20px;
             background-color: white;
+            padding: 20px;
+            border-radius: 5px;
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            border-radius: 10px;
-            margin-top: 50px;
         }
         h1 {
-            color: #2c3e50;
+            color: #333;
+            font-size: 24px;
             text-align: center;
-            margin-bottom: 30px;
+        }
+        p {
+            font-size: 16px;
+            text-align: center;
         }
         .quiz-options {
             display: flex;
-            justify-content: space-around;
-            margin-top: 40px;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
         }
         .quiz-option {
-            background-color: #3498db;
+            display: block;
+            width: 80%;
+            background-color: #007bff;
             color: white;
-            padding: 15px 30px;
+            padding: 15px 20px;
+            margin: 10px 0;
             text-decoration: none;
             border-radius: 5px;
             transition: background-color 0.3s;
+            text-align: center;
             font-size: 18px;
         }
         .quiz-option:hover {
-            background-color: #2980b9;
-        }
-        .description {
-            text-align: center;
-            margin: 30px 0;
-            font-size: 18px;
-            color: #555;
+            background-color: #0056b3;
         }
         .footer {
+            margin-top: 20px;
             text-align: center;
-            margin-top: 50px;
-            color: #777;
             font-size: 14px;
+            color: #666;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>VBA検定クイズにようこそ！</h1>
-        <p class="description">
-            VBAのスキルをテストし、知識を深めましょう。<br>
-            ベーシック検定とエキスパート検定の2つのレベルから選べます。
-        </p>
+        <h1>プログラミングクイズにようこそ！</h1>
+
+        <p>プログラミングスキルをテストし、知識を深めましょう。VBA検定（ベーシックとエキスパート）と正規表現クイズの3つのレベルから選べます。</p>
+
         <div class="quiz-options">
-            <a href="basic_quiz.html" class="quiz-option">ベーシック検定</a>
-            <a href="expert_quiz.html" class="quiz-option">エキスパート検定</a>
+            <a href="basic_quiz.html" class="quiz-option">VBAベーシック検定</a>
+            <a href="expert_quiz.html" class="quiz-option">VBAエキスパート検定</a>
+            <a href="lookahead_lookbehind_quiz.html" class="quiz-option">正規表現クイズ</a>
         </div>
-        <p class="description">
-            各クイズは複数の質問で構成されており、<br>
-            あなたのVBAスキルを総合的に評価します。
-        </p>
+
+        <p>各クイズは複数の質問で構成されており、あなたのプログラミングスキルを総合的に評価します。</p>
+
         <div class="footer">
-            &copy; 2024 VBA検定クイズ. All rights reserved.
+            © 2024 プログラミングクイズ. All rights reserved.
         </div>
     </div>
 </body>
