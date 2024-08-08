@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>³‹K•\Œ»”Û’èŒnƒNƒCƒY</title>
+    <title>æ­£è¦è¡¨ç¾å¦å®šç³»ã‚¯ã‚¤ã‚º</title>
     <style>
         body { 
             font-family: Arial, sans-serif; 
@@ -80,19 +80,19 @@
 </head>
 <body>
     <div id="quiz">
-        <h1>³‹K•\Œ»”Û’èŒnƒNƒCƒY</h1>
+        <h1>æ­£è¦è¡¨ç¾å¦å®šç³»ã‚¯ã‚¤ã‚º</h1>
         <p id="progress"></p>
         <p id="question"></p>
         <div id="choices"></div>
         <p id="result"></p>
         <div id="explanation"></div>
-        <button id="next" onclick="nextQuestion()">Ÿ‚Ì–â‘è‚Ö</button>
-        <button id="pauseResume" onclick="togglePauseResume()">’†’f‚·‚é</button>
-        <button id="restart" onclick="restartQuiz()" style="display: none;">Å‰‚©‚çn‚ß‚é</button>
+        <button id="next" onclick="nextQuestion()">æ¬¡ã®å•é¡Œã¸</button>
+        <button id="pauseResume" onclick="togglePauseResume()">ä¸­æ–­ã™ã‚‹</button>
+        <button id="restart" onclick="restartQuiz()" style="display: none;">æœ€åˆã‹ã‚‰å§‹ã‚ã‚‹</button>
     </div>
     <script src="lookahead_lookbehind_quiz.js"></script>
     <script>
-        const QUIZ_ID = "lookahead_lookbehind_quiz_1"; // ŠeƒNƒCƒYƒy[ƒW‚Åƒ†ƒj[ƒN‚ÈID‚ğİ’è
+        const QUIZ_ID = "lookahead_lookbehind_quiz_1"; // å„ã‚¯ã‚¤ã‚ºãƒšãƒ¼ã‚¸ã§ãƒ¦ãƒ‹ãƒ¼ã‚¯ãªIDã‚’è¨­å®š
         
         let currentQuestion = 0;
         let userAnswers = [];
@@ -110,7 +110,7 @@
         function loadQuestion() {
             if (isPaused) return;
             const quiz = quizData[currentQuestion];
-            progressEl.textContent = `–â‘è ${currentQuestion + 1} / ${quizData.length}`;
+            progressEl.textContent = `å•é¡Œ ${currentQuestion + 1} / ${quizData.length}`;
             questionEl.textContent = quiz.question;
             choicesEl.innerHTML = "";
             resultEl.textContent = "";
@@ -124,7 +124,7 @@
                 button.onclick = () => checkAnswer(index);
                 choicesEl.appendChild(button);
             });
-            pauseResumeButton.textContent = "’†’f‚·‚é";
+            pauseResumeButton.textContent = "ä¸­æ–­ã™ã‚‹";
             pauseResumeButton.style.display = "inline-block";
         }
 
@@ -132,11 +132,11 @@
             const quiz = quizData[currentQuestion];
             userAnswers[currentQuestion] = choiceIndex;
             if (choiceIndex === quiz.correct) {
-                resultEl.textContent = "³‰ğI";
+                resultEl.textContent = "æ­£è§£ï¼";
                 resultEl.style.color = "#27ae60";
                 score++;
             } else {
-                resultEl.textContent = "•s³‰ğB³‰ğ‚Íu" + quiz.choices[quiz.correct] + "v‚Å‚·B";
+                resultEl.textContent = "ä¸æ­£è§£ã€‚æ­£è§£ã¯ã€Œ" + quiz.choices[quiz.correct] + "ã€ã§ã™ã€‚";
                 resultEl.style.color = "#c0392b";
             }
             explanationEl.textContent = quiz.explanation;
@@ -156,8 +156,8 @@
         }
 
         function finishQuiz() {
-            questionEl.textContent = "ƒNƒCƒYI—¹I‚¨”æ‚ê—l‚Å‚µ‚½B";
-            progressEl.textContent = `ÅIƒXƒRƒA: ${score} / ${quizData.length}`;
+            questionEl.textContent = "ã‚¯ã‚¤ã‚ºçµ‚äº†ï¼ãŠç–²ã‚Œæ§˜ã§ã—ãŸã€‚";
+            progressEl.textContent = `æœ€çµ‚ã‚¹ã‚³ã‚¢: ${score} / ${quizData.length}`;
             choicesEl.innerHTML = "";
             resultEl.textContent = "";
             explanationEl.style.display = "none";
@@ -182,7 +182,7 @@
             const savedState = localStorage.getItem(`quizState_${QUIZ_ID}`);
             if (savedState) {
                 const state = JSON.parse(savedState);
-                // ƒIƒvƒVƒ‡ƒ“: —LŒøŠúŒÀ‚Ìƒ`ƒFƒbƒNi—áF7“úŠÔj
+                // ã‚ªãƒ—ã‚·ãƒ§ãƒ³: æœ‰åŠ¹æœŸé™ã®ãƒã‚§ãƒƒã‚¯ï¼ˆä¾‹ï¼š7æ—¥é–“ï¼‰
                 if (new Date().getTime() - state.timestamp > 7 * 24 * 60 * 60 * 1000) {
                     localStorage.removeItem(`quizState_${QUIZ_ID}`);
                     return false;
@@ -200,15 +200,15 @@
             isPaused = !isPaused;
             if (isPaused) {
                 saveQuizState();
-                pauseResumeButton.textContent = "ÄŠJ‚·‚é";
-                questionEl.textContent = "ƒNƒCƒY‚ª’†’f‚³‚ê‚Ü‚µ‚½BÄŠJ‚·‚é‚É‚ÍuÄŠJ‚·‚évƒ{ƒ^ƒ“‚ğ‰Ÿ‚µ‚Ä‚­‚¾‚³‚¢B";
+                pauseResumeButton.textContent = "å†é–‹ã™ã‚‹";
+                questionEl.textContent = "ã‚¯ã‚¤ã‚ºãŒä¸­æ–­ã•ã‚Œã¾ã—ãŸã€‚å†é–‹ã™ã‚‹ã«ã¯ã€Œå†é–‹ã™ã‚‹ã€ãƒœã‚¿ãƒ³ã‚’æŠ¼ã—ã¦ãã ã•ã„ã€‚";
                 choicesEl.innerHTML = "";
                 resultEl.textContent = "";
                 explanationEl.style.display = "none";
                 nextButton.style.display = "none";
                 restartButton.style.display = "inline-block";
             } else {
-                pauseResumeButton.textContent = "’†’f‚·‚é";
+                pauseResumeButton.textContent = "ä¸­æ–­ã™ã‚‹";
                 loadQuestion();
                 restartButton.style.display = "none";
             }
@@ -226,8 +226,8 @@
         function startQuiz() {
             if (loadQuizState()) {
                 if (isPaused) {
-                    pauseResumeButton.textContent = "ÄŠJ‚·‚é";
-                    questionEl.textContent = "ƒNƒCƒY‚ª’†’f‚³‚ê‚Ä‚¢‚Ü‚·BÄŠJ‚·‚é‚É‚ÍuÄŠJ‚·‚évƒ{ƒ^ƒ“‚ğ‰Ÿ‚µ‚Ä‚­‚¾‚³‚¢B";
+                    pauseResumeButton.textContent = "å†é–‹ã™ã‚‹";
+                    questionEl.textContent = "ã‚¯ã‚¤ã‚ºãŒä¸­æ–­ã•ã‚Œã¦ã„ã¾ã™ã€‚å†é–‹ã™ã‚‹ã«ã¯ã€Œå†é–‹ã™ã‚‹ã€ãƒœã‚¿ãƒ³ã‚’æŠ¼ã—ã¦ãã ã•ã„ã€‚";
                     choicesEl.innerHTML = "";
                     resultEl.textContent = "";
                     explanationEl.style.display = "none";
