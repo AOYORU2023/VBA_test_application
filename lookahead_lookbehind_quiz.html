@@ -110,19 +110,19 @@
         function loadQuestion() {
             if (isPaused) return;
             const quiz = quizData[currentQuestion];
-
-                // 改行の処理を追加
-            quiz.question = quiz.question.replace(/{newline}/g, '\n');
-            quiz.explanation = quiz.explanation.replace(/{newline}/g, '\n');
+            
+            // 改行の処理を追加：\n を <br> に変換
+            const formattedQuestion = quiz.question.replace(/\n/g, '<br>');
+            const formattedExplanation = quiz.explanation.replace(/\n/g, '<br>');
             
             progressEl.textContent = `問題 ${currentQuestion + 1} / ${quizData.length}`;
-            questionEl.textContent = quiz.question;
+            questionEl.innerHTML = formattedQuestion;  // textContent の代わりに innerHTML を使用
             choicesEl.innerHTML = "";
             resultEl.textContent = "";
+            explanationEl.innerHTML = formattedExplanation;  // 説明文も同様に処理
             explanationEl.style.display = "none";
             nextButton.style.display = "none";
             restartButton.style.display = "none";
-
             quiz.choices.forEach((choice, index) => {
                 const button = document.createElement("button");
                 button.textContent = choice;
