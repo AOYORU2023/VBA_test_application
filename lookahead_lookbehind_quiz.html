@@ -110,6 +110,11 @@
         function loadQuestion() {
             if (isPaused) return;
             const quiz = quizData[currentQuestion];
+
+                // 改行の処理を追加
+            quiz.question = quiz.question.replace(/{newline}/g, '\n');
+            quiz.explanation = quiz.explanation.replace(/{newline}/g, '\n');
+            
             progressEl.textContent = `問題 ${currentQuestion + 1} / ${quizData.length}`;
             questionEl.textContent = quiz.question;
             choicesEl.innerHTML = "";
